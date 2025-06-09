@@ -197,11 +197,11 @@ function contact() {
   var b = document.createElement("div");
   b.className = "gride";
   b.innerHTML =
-    '<div id="icou"><i class="fa fa-snapchat"></i></div>\
-<div id="icou"><i class="fa fa-linkedin"></i></div>\
-<div id="icou"><i class="fa fa-phone"></i></div>\
-<div id="icou"><i class="fa fa-envelope"></i></div>\
-<div id="icou"><i class="fa fa-github"></i></div>\
+    '<div id="icou"><i onclick="lnk(4)" class="fa fa-snapchat"></i></div>\
+<div id="icou"><i onclick="lnk(5)" class="fa fa-linkedin"></i></div>\
+<div id="icou"><i onclick="lnk(2)" class="fa fa-phone"></i></div>\
+<div id="icou"><i onclick="lnk(1)" class="fa fa-envelope"></i></div>\
+<div id="icou"><i onclick="lnk(3)" class="fa fa-github"></i></div>\
 <div id="icbtn"><form method="GET" action="https://www.buymeacoffee.com/ayaanshakoor">\
 <button id="checkout-button" type="submit">Buy me a coffee <i class="fa fa-coffee"></i>"\
 </button>\
@@ -212,7 +212,26 @@ function contact() {
 
   main.append(a, b);
 }
+function lnk(sa){
+switch(sa){
+  case 1:
+    window.open("mailto:ayaanshakoor111@gmail.com")
+    break
+  case 2:
+    window.open("tel:+916307655542")
+    break
+  case 3:
+    window.open("https://github.com/ayaanbff/")
+    break
+  case 4:
+    window.open("https://www.snapchat.com/add/ayaan_shakoor?share_id=1W945uem0Iw&locale=en-GB")
+    break
+  case 5:
+    window.open("https://in.linkedin.com/in/ayaan-shakoor-aa5218253")
+    break
+}
 
+}
 function removedabt() {
   removemsg();
   document.querySelectorAll("#sect")?.forEach((item) => item.remove());
