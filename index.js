@@ -229,6 +229,17 @@ switch(sa){
   case 5:
     window.open("https://in.linkedin.com/in/ayaan-shakoor-aa5218253")
     break
+  case 6:
+    break
+  case 7:
+    window.open("https://wa.me/+916307655542")
+    break
+  case 8:
+    window.open("https://t.me/ayaan_shakoor")
+    break
+  case 9:
+    window.open("https://www.facebook.com/people/Ayaan-Shakoor/pfbid0fygNfGTHCcbGGrSfCED8WFSdnDPYPpx9dCBp8VCsEaD7qJdJDyKvpzF7ZzUzaxi5l/")
+    break
 }
 
 }
