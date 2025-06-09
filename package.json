@@ -1,0 +1,25 @@
+{
+  "name": "ayaan",
+  "version": "1.0.0",
+  "description": "Biography website of ayaan shakoor",
+  "main": "index.js",
+  "scripts": {
+    "prev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "ayaan",
+    "ayaan shakoor",
+    "shakoor",
+    "ayaan-shakoor",
+    "ayaan_shakoor",
+    "ayaan shakoor kanpur"
+  ],
+  "author": "Ayaan shakoor",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "stripe": "^12.0.0"
+  }
+}
