@@ -1,726 +1,409 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Sigmar&display=swap");
-body {
-  margin: 0;
-  padding: 0;
-  overflow-y: scroll;
-  display: flex;
+var chs = document.querySelectorAll("#char");
+var wds = document.querySelectorAll(".as");
+var ico = document.querySelectorAll("#navv i");
+var hs = document.querySelectorAll("h3");
+var nav = document.getElementById("navv");
+var niu = document.querySelectorAll("#yy");
+var mid = document.getElementById("mid");
+var sects = document.querySelectorAll("#sect");
+const firebaseConfig = {
+  apiKey: "AIzaSyCZldly3sOYzi6fTYsrvXZeYbrRX3Rt3Gk",
+  authDomain: "ayaan-shakoor.firebaseapp.com",
+  projectId: "ayaan-shakoor",
+  storageBucket: "ayaan-shakoor.appspot.com",
+  messagingSenderId: "1079940003778",
+  appId: "1:1079940003778:web:9c4c5b3d489c379e1e485b",
+  measurementId: "G-BM06BS9RYR",
+};
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+var stext =
+  '    <div class="as">18 yrs old</div>\
+<div class="as">Web Dev</div>\
+<div class="as">28-nov-2006</div>\
+<div class="as">languages known javascript,bash scripting,html,php & kotlin</div>\
+<div class="as">Frameworks known react,node,jquery and ejs </div>\
+<div class="as">Styling with css and scss</div>\
+<div class="as">Api known stripe,peerjs,socket.io,</div>\
+    <div class="as">geolocation,</div>\
+<div class="as">history and webRTC</div>\
+<div class="as">Databases  </div>\
+<div class="as"><ul><li>sql [mysql,postgressql]</li> <li>nosql [mongodb]</li></ul></div>\
+ ';
+var sect_1 = sects[0];
+var sect_2 = sects[1];
+localStorage.clear();
+ico[3].onclick = () =>
+  ico[3].style.color == "white" ? console.log("nonoe") : contact();
+ico[4].onclick = () =>
+  ico[4].style.color == "white" ? console.log("nonoe") : projects();
+ico[2].onclick = () =>
+  ico[2].style.color == "white" ? console.log("nonoe") : messages();
+ico[1].style.color = "white";
+ico[1].onclick = () =>
+  ico[1].style.color == "white" ? console.log("nonoe") : about();
+ico[0].onclick = () =>
+  ico[0].style.color == "white" ? console.log("nonoe") : home();
+hs[1].style.color = "white";
+localStorage.setItem("current", 0);
+home();
+function projects() {
+  localStorage.setItem("current", 4);
+  removeproj();
+  removedabt();
+  removemsg();
+  removehome();
+  removedcontact();
+  ico[4].style.color = "white";
+  hs[4].style.color = "white";
+  refresh();
+  document.getElementById("top").nextElementSibling.id = "projects";
+  var pr = document.querySelector("#projects");
+  var a = document.createElement("div");
+  a.className = "gridee";
+  a.innerHTML =
+    '<div id="pj">Semester-marks</div>\
+  <div id="pj">Bffforever</div>\
+  <div id="pj">File-Sender</div>\
+  <div id="pj">Php-tool</div>\
+  ';
+  pr.append(a);
+  document.querySelectorAll("#pj").forEach((item) => {
+    item.onclick = (e) => {
+      open(`https://github.com/ayaanbff/${e.target.innerText}`, "blank");
+    };
+  });
 }
-#nav {
-  width: 5%;
-  min-height: 125%;
-  background-color: rgb(8, 8, 130);
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 0;
+function removeproj() {
+  document
+    .querySelector("#projects")
+    ?.childNodes?.forEach((item) => item.remove());
 }
-#welst {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
+function home() {
+  localStorage.setItem("current", 0);
+  removedabt();
+  removehome()
+  removemsg();
+  removeproj();
+
+  removedcontact();
+  ico[0].style.color = "white";
+  hs[0].style.color = "white";
+  refresh();
+  document.getElementById("top").nextElementSibling.id = "contact";
+  var wel = document.createElement("div");
+  wel.id = "welst";
+  wel.innerHTML =
+    "<div><h1><span>Hi,</span> Welcome to my website !</h1></div>\
+<div id='hmys'>I am ayaan shakoor 18 yrs old currently pursuing my school studies . To know more about me go to about page or navigate contact page .</div><div id='hu'><h2>Go on have a little scroll </h2>\
+";
+  document.querySelector("#contact").append(wel);
 }
-#welst div {
-  width: 100%;
-  text-align: center;
-  margin: auto;
-  opacity: 0;
-  animation: show 1s 2s forwards ease-in;
+function removehome() {
+  document.getElementById("top").nextElementSibling.innerHTML = "";
 }
-#hmys {
-  font-family: "Permanent Marker", cursive;
-  font-size: 7vh;
-  font-weight: bold;
+function messages() {
+  removedabt();
+  removeproj();
+  removehome();
+  removemsg();
+  removedcontact();
+  localStorage.setItem("current", 2);
+
+  ico[2].style.color = "white";
+  hs[2].style.color = "white";
+  refresh();
+  document.getElementById("top").nextElementSibling.id = "msgg";
+  var msgg = document.getElementById("msgg");
+  var inp = document.createElement("div");
+  inp.id = "txdiv";
+  var hh = document.createElement("div");
+  hh.id = "hhh";
+  hh.innerText = "Send an anonymous message";
+  var ms = document.createElement("textarea");
+  ms.id = "txxt";
+  ms.placeholder = "Say something.........";
+  var ii = document.createElement("div");
+  ii.id = "icons";
+  ii.innerHTML =
+    "<div class='tyt'>\
+    <input type='file' onchange='awer(awe.files.length)' multiple='true' \
+    style='display:none;visibility:hidden' id='awe'><i onclick='awe.click()'\
+     class='fa fa-plus'></i></input>\
+    </div>\
+    <div class='tyt'>\
+<i class='fa fa-send' onclick='sendmsg()'></i>\
+    </div>";
+
+  inp.append(hh, ms, ii);
+  msgg.append(inp);
+  // awe.onclick=()=>awe.files
 }
-#welst h1 {
-  font-family: "Lilita One", cursive;
-  font-size: 10vh;
+var file;
+function sendmsg() {
+  if (file?.length > 0 || txxt.value != "") {
+    firebase
+      .firestore()
+      .collection("New")
+      .doc(txxt.value?.toString()||"ab"+Math.random().toFixed(3))
+      .set({
+        msg: txxt.value?.toString(),
+      })
+      .then(() => {
+        txxt.value = "";
+      });
+    if (!file?.length) return;
+    for (let o = 0; o < file.length; o++) {
+      firebase
+        .storage()
+        .ref()
+        .child(txxt.value?.toString() + file[o].name)
+        .put(file[o]);
+    }
+    document.querySelector("#wdd")?.remove();
+    // msg upload
+    file = [];
+  }
 }
-#welst span,
-#welst h2 {
-  font-family: "Sigmar", cursive;
+function awer(a) {
+  file = [];
+  file = awe.files;
+  document.querySelector("#wdd")?.remove();
+  document.querySelector(
+    ".tyt"
+  ).innerHTML += `<div id="wdd">${a} files selected</div>`;
+}
+function removemsg() {
+  document.querySelector("#msgg")?.children[0]?.remove();
 }
 
-#navv h3:hover {
-  color: white;
-  cursor: pointer;
-}
-@keyframes na {
-  100% {
-    opacity: 1;
-  }
-}
-#navv {
-  min-height: 98%;
-  width: 100%;
-  position: absolute;
-  border: 0;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.17);
-  backdrop-filter: blur(5px);
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  z-index: 1000;
-  padding-left: 2vh;
-  animation: na 2s 2s forwards ease;
-}
-#yy {
-  font-size: 5vh;
-  opacity: 0;
-  position: absolute;
-}
-#yy:first-child {
-  opacity: 1;
-  position: relative;
-}
-#nmm {
-  border-bottom: 5px solid darkblue;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  align-self: flex-start;
-  overflow: hidden;
-  display: flex;
-}
-#iuo {
-  overflow: hidden;
-  width: 100%;
-  display: flex;
-  margin-top: 6vh;
-  align-items: center;
-}
-#iuo:first-child {
-  margin-top: 2vh;
-}
-#iuo h3 {
-  margin-left: 10%;
-  text-align: center;
-  font-family: monospace;
-  opacity: 0;
-  font-size: 4vh;
-}
-#navv i {
-  font-size: 5.6vh;
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.65);
-}
-#nav:hover {
-  overflow: hidden;
-  animation: wid 1s forwards ease alternate;
-}
-#navv i:first-child {
-  margin-top: 0px;
-}
-#navv:hover {
-  width: 102%;
-}
-@keyframes wid {
-  0% {
-    width: 5%;
-  }
-  100% {
-    width: 15%;
-  }
-}
-#navv i:hover {
-  color: white !important;
-}
-#main {
-  position: absolute;
-  width: 95%;
-  height: 125%;
-  background-image: url(https://images.pexels.com/photos/7130475/pexels-photo-7130475.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2);
-  /* https://cdn.fansshare.com/image/backgroundimage/background-images-for-websites-black-background-image-766928725.jpg */
+function contact() {
+  removehome();
+  removemsg();
+  removeproj();
+  removedabt();
+  removedcontact();
+  localStorage.setItem("current", 3);
+  document.getElementById("top").nextElementSibling.id = "contact";
+  ico[3].style.color = "white";
+  hs[3].style.color = "white";
+  refresh();
+  var main = document.querySelector("#contact");
+  var a = document.createElement("div");
+  a.innerHTML =
+    '<div id="pph">Phone no. <a href="tel:+916307655542">6307655542</a> |</div> Email:\
+<a href="mailto:ayaanshakoor111@gmail.com"> ayaanshakoor111@gmail.com</a>\
+';
+  a.className = "detail";
+  var b = document.createElement("div");
+  b.className = "gride";
+  b.innerHTML =
+    '<div id="icou"><i onclick="lnk(4)" class="fa fa-snapchat"></i></div>\
+<div id="icou"><i onclick="lnk(5)" class="fa fa-linkedin"></i></div>\
+<div id="icou"><i onclick="lnk(2)" class="fa fa-phone"></i></div>\
+<div id="icou"><i onclick="lnk(1)" class="fa fa-envelope"></i></div>\
+<div id="icou"><i onclick="lnk(3)" class="fa fa-github"></i></div>\
+<div id="icbtn"><form method="GET" action="https://www.buymeacoffee.com/ayaanshakoor">\
+<button id="checkout-button" type="submit">Buy me a coffee <i class="fa fa-coffee"></i>"\
+</button>\
+</form></div>\
+';
 
-  /* background-color: rgba(17,17,17,.8); */
-  display: flex;
-  background-size: cover;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 0.2%;
-  padding-bottom: 0.24%;
-  gap: 1%;
-  right: 0;
+  //upi://pay?pa=6307655542@fam&pn=Ayaan%20Shakoor&cu=INR
+
+  main.append(a, b);
 }
-.as {
-  opacity: 0;
-  position: absolute;
-  border-bottom: 2px solid black;
-  font-family: courier;
-  font-size: 3.6vh;
-}
-#top {
-  color: white;
-  font-size: 2.6vi;
-  text-align: center;
-  width: 95%;
-  /* background-color: rgb(218, 85, 236) ; */
-  animation: topa 3s forwards ease-in;
-  word-spacing: 0px;
-  letter-spacing: 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#char:hover {
-  animation: upside 1s forwards ease alternate;
-}
-@keyframes upside {
-  0% {
-    rotate: 0deg;
-  }
-  50% {
-    rotate: 180deg;
-  }
-  100% {
-    rotate: 360deg;
-  }
+function lnk(sa){
+switch(sa){
+  case 1:
+    window.open("mailto:ayaanshakoor111@gmail.com")
+    break
+  case 2:
+    window.open("tel:+916307655542")
+    break
+  case 3:
+    window.open("https://github.com/ayaanbff/")
+    break
+  case 4:
+    window.open("https://www.snapchat.com/add/ayaan_shakoor?share_id=1W945uem0Iw&locale=en-GB")
+    break
+  case 5:
+    window.open("https://in.linkedin.com/in/ayaan-shakoor-aa5218253")
+    break
+  case 6:
+    break
+  case 7:
+    window.open("https://wa.me/+916307655542")
+    break
+  case 8:
+    window.open("https://t.me/ayaan_shakoor")
+    break
+  case 9:
+    window.open("https://www.facebook.com/people/Ayaan-Shakoor/pfbid0fygNfGTHCcbGGrSfCED8WFSdnDPYPpx9dCBp8VCsEaD7qJdJDyKvpzF7ZzUzaxi5l/")
+    break
 }
 
-#char {
-  padding: 0;
-  margin: 0;
-  letter-spacing: 0.6vh;
-  word-spacing: 0px;
-  opacity: 0;
-  cursor: pointer;
 }
-@keyframes topa {
-  0% {
-    height: 100%;
-  }
-  100% {
-    height: 13%;
-  }
+function removedabt() {
+  removemsg();
+  document.querySelectorAll("#sect")?.forEach((item) => item.remove());
+  document
+    .getElementById("top")
+    .nextElementSibling.classList.remove("midafter");
 }
-@keyframes show {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.shu {
-  animation: show 0.5s forwards ease-in;
-}
-#mid {
-  display: flex;
-  width: 95%;
-}
-.as:last-child {
-  padding-left: 1vh;
-}
-#sect:first-child {
-  animation: aj 2s 3s forwards ease-in;
-  margin-right: 1%;
-  font-size: 1.4rem;
-}
-#sect:last-child {
-  animation: as 2s 3s forwards ease;
-  display: flex;
-  justify-content: center;
+function removedcontact() {
+  document.querySelector(".detail")?.remove();
+  document.querySelector(".gride")?.remove();
 }
 
-#sect:last-child img {
-  /* width: 25%; */
-  height: 40%;
-  opacity: 0;
-  animation: au 0.5s 5s forwards ease-in;
-  position: absolute;
+function about() {
+  localStorage.setItem("current", 1);
+  removehome();
+  removeproj();
+  removedcontact();
+  removedabt();
+  ico[1].style.color = "white";
+  hs[1].style.color = "white";
+  refresh();
+  document.getElementById("top").nextElementSibling.id = "mid";
+  var mi = document.querySelector("#mid");
+  mi.classList.add("midafter");
+  var a = sect_1;
+  a.style.animationDelay = "0ms";
+  var b = sect_2;
+  b.style.animationDelay = "0ms";
+  var category = "history";
+  $.ajax({
+    method: "GET",
+    url: "https://api.api-ninjas.com/v1/quotes",
+    headers: { "X-Api-Key": "B9WtaX0GJFIygNtj91lGpw==Q8h1XfrkvMDFpGDR" },
+    contentType: "application/json",
+    success: 
+    function (result) {
+      b.innerText = result[0].quote;
+    },
+    error: function ajaxError(jqXHR) {
+      console.error("Error: ", jqXHR.responseText);
+    },
+  });
+  a.querySelectorAll(".as").forEach((item) => item.remove());
+  mi.append(a, b);
+  setTimeout(() => {
+    document.querySelector("#sect:first-child").innerHTML = stext;
+    txt();
+  }, 2000);
 }
-@keyframes au {
-  100% {
-    opacity: 1;
-    position: relative;
-  }
-}
-@keyframes aj {
-  0% {
-    width: 0%;
-    height: 0%;
-  }
-  99%{
-    height: 100%;
-  }
-  100% {
-    min-height: 100%;
-    width: 60%;
-    height: max-content;
-    color: white;
-    font-weight: bolder;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(5px);
-    padding: 0.5%;
-    border: 0;
-    border-radius: 6px;
-    font-size: 1.4rem;
-    margin-right: 1%;
-
-    /* background-color: black */
-  }
-}
-
-@keyframes as {
-  0% {
-    width: 0%;
-    height: 0%;
-  }
-  100% {
-    width: 40%;
-    height: 100%;
-    /* background-color: black; */
-    color: white;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(5px);
-    padding: 0.5%;
-    border: 0;
-    border-radius: 6px;
-  }
+for (var a = 0; a < ico.length; a++) {
+  ico[a].addEventListener("mouseover", (e) => {
+    var hsa = e.target.nextElementSibling;
+    hsa.style.color = "white";
+  });
+  ico[a].addEventListener("mouseout", (e) => {
+    var hsa = e.target.nextElementSibling;
+    if (hsa == hs[localStorage.getItem("current")]) {
+    } else hsa.style.color = "black";
+    if (e.target == ico[localStorage.getItem("current")]) {
+    } else e.target.style.color = "rgba(255, 255, 255, .65)";
+  });
 }
 
-#mid {
-  animation: mide 0.1s 3s forwards ease;
-}
-#bottom {
-  animation: botu 1s 3s forwards ease-in;
-  display: flex;
-  gap: 5%;
-  justify-content: center;
-}
-@keyframes mide {
-  100% {
-    height: 65%;
-  }
-}
-.midafter {
-  display: flex;
-  width: 95%;
-  height: 65%;
-}
-@keyframes botu {
-  0% {
-    width: 0;
-    height: 0;
-  }
-
-  100% {
-    width: 95%;
-    height: 19%;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(3px);
-
-    color: white;
-    margin-top: 1.4%;
-    border: 0;
-    border-radius: 5px;
-  }
-}
-#contact {
-  animation: conta 2s forwards ease;
-  background-color: rgba(255, 255, 255, 0.36);
-  backdrop-filter: blur(5px);
-}
-#msgg {
-  animation: conta 2s forwards ease;
-  background-color: rgba(255, 255, 255, 0.36);
-  backdrop-filter: blur(5px);
-}
-@keyframes conta {
-  0% {
-    height: 0%;
-    width: 0%;
-  }
-  100% {
-    height: 70%;
-    width: 95%;
+function refresh() {
+  for (var i = 0; i < ico.length; i++) {
+    var iw = localStorage.getItem("current");
+    if (hs[i] == hs[iw]) {
+    } else hs[i].style.color = "black";
+    if (ico[i] == ico[iw]) {
+    } else ico[i].style.color = "rgba(255, 255, 255, .65)";
   }
 }
 
-#top {
-  width: 100%;
-}
+nav.onmouseenter = () => {
+  console.log(1);
+  hs.forEach((item) => {
+    item.animate([{ opacity: 0 }, { opacity: 1 }], {
+      delay: 0,
+      duration: 1000,
+      fill: "forwards",
+    });
+  });
 
-#uas {
-  color: white;
-  opacity: 0;
-  animation: ics 1s 5s forwards ease;
-  z-index: 1000;
-  cursor: pointer;
-}
-#ic {
-  width: 20%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-@keyframes ics {
-  0% {
-    opacity: 0;
+  for (var g = 1; g < 5; g++) {
+    item = niu[g];
+    item.animate([{ opacity: 0 }, { opacity: 1, position: "relative" }], {
+      delay: 0,
+      duration: 1000,
+      fill: "forwards",
+    });
   }
-  100% {
-    opacity: 1;
-    font-size: 4vi;
-  }
-}
+};
+nav.onmouseleave = () => {
+  refresh();
+  hs.forEach((item) => {
+    item.animate(
+      { opacity: 0 },
 
-.detail {
-  width: 100%;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: bold;
-  font-size: 3vh;
-  opacity: 0;
-  animation: show 1s 0.5s forwards ease-in;
-  outline: none;
-  text-decoration: none;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 1vh;
-  height: max-content;
-}
-a {
-  outline: none;
-  text-decoration: none;
-}
-a:hover {
-  color: white;
-}
+      {
+        delay: 0,
+        duration: 0,
+        fill: "forwards",
+      }
+    );
+  });
 
-.gride {
-  width: 100%;
-  height: 85%;
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
-  justify-content: center;
-  align-items: center;
-}
-#icou {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 9vh;
-  opacity: 0;
-  color: rgba(255, 255, 255, 0.8);
-  width: 100%;
-  height: 100%;
-  animation: show 1s 1.4s forwards ease;
-}
-#icou i {
-  cursor: pointer;
-}
-#icou i:hover {
-  color: white;
-}
-#icou {
-  border-right: 2px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-}
-#icou:nth-last-col {
-  border-right: 0;
-}
-#icou:last-child {
-  border-bottom: 0 !important;
-}
-#icou:nth-child(5) {
-  border-bottom: 0;
-}
-#icbtn {
-  grid-column: 2/-1;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  opacity: 0;
-  animation: show 1s 1s forwards ease;
-}
-#icbtn button {
-  font-weight: bolder;
-  font-family: "acme";
-  color: black;
-  background-color: rgba(255, 255, 0, 0.788);
-  border: 0;
-  border-radius: 8px;
-  width: 14vw;
-  height: 8vh;
-  font-size: 3.2vh;
-}
-#icbtn button:hover {
-  background-color: yellow;
-  cursor: pointer;
-}
-#txdiv {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-}
-#txxt {
-  width: 100%;
-  height: 85%;
-  background-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(5px);
-  font-size: 3vh;
-  padding: 1vh;
-  border-radius: 1.2vh;
-  resize: vertical;
-}
-#projects {
-  width: 95%;
-  height: 65%;
-}
-#pj {
-  width: 99%;
-  height: 99%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-  font-family: monospace;
-  font-weight: bold;
-  font-size: 5vh;
-  color: white;
-  background-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(5px);
-  cursor: pointer;
-  transition: all 1s;
-}
+  for (var g = 1; g < 5; g++) {
+    item = niu[g];
+    item.animate([{ opacity: 1 }, { opacity: 0, position: "absolute" }], {
+      delay: 0,
+      duration: 20,
+      fill: "forwards",
+    });
+  }
+};
 
-#pj:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  transition: all 1s;
-}
-#sect:last-child {
-  font-family: monospace;
-  text-align: center;
-  font-size: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bolder;
-}
-.gridee {
-  width: 100%;
-  height: 90%;
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
-  justify-content: center;
-  align-items: center;
-}
-#hhh {
-  width: 100%;
-  font-size: 4vh;
-  text-align: center;
-  opacity: 0;
-  font-family: monospace;
-  animation: show 0.5s 1s forwards;
-}
-#icons {
-  width: 100%;
-  display: flex;
-}
-.tyt {
-  background-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(5px);
-  margin-top: 0.5vh;
-  min-width: 5vh;
-  display: flex;
-  justify-content: center;
-  border-radius: 8px;
-  font-size: 3vh;
-}
-#icons i {
-  font-size: 5vh;
-  color: white;
-  cursor: pointer;
-}
-.tyt:first-child {
-  max-width: 90%;
-}
-.tyt:last-child {
-  width: 5%;
-  margin-left: auto;
-}
-@media (width<670px) {
-  body {
-    overflow-x: hidden;
+setTimeout(() => {
+  for (var a = 0; a < chs.length; a++) {
+    chs[a].animate(
+      [
+        { opacity: "0", visibility: "hidden" },
+        { opacity: "1", visibility: "visible" },
+      ],
+      {
+        delay: a * 500,
+        duration: 500,
+        fill: "forwards",
+      }
+    );
   }
- 
-  #nav {
-    bottom: 0;
-    width: 100%;
-    min-height: 2vh;
-    height: 10vh;
-    flex-direction: row;
-    animation: none;
-    position: fixed !important;
-    z-index: 10000;
-    align-items: flex-end;
-    justify-content: start;
-  }
-  #nav #nmm {
-    display: none;
-  }
-  #navv {
-    flex-direction: row;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    z-index: 100000;
-    justify-content: center;
-    align-items: center;
-  }
-  #main {
-    width: 100%;
-  }
-  #top {
-    height: max-content !important;
-    width: 100%;
-    padding: 2vh;
-    flex-direction: column;
-  }
+}, 2000);
 
-  #char {
-    font-size: 2.1rem;
-    letter-spacing: 0.1px;
+setTimeout(() => {
+  for (var a = 0; a < wds.length; a++) {
+    wds[a].animate(
+      [
+        { opacity: "0", visibility: "hidden" },
+        { opacity: "1", visibility: "visible", position: "relative" },
+      ],
+      {
+        delay: a * 500,
+        duration: 500,
+        fill: "forwards",
+      }
+    );
   }
-  #welst div {
-    font-size: 1.4rem;
+}, 6000);
+var txt = () => {
+  let wd = document.querySelectorAll(".as");
+  for (var a = 0; a < wd.length; a++) {
+    wd[a].animate(
+      [
+        { opacity: "0", visibility: "hidden" },
+        { opacity: "1", visibility: "visible", position: "relative" },
+      ],
+      {
+        delay: a * 500,
+        duration: 500,
+        fill: "forwards",
+      }
+    );
   }
-
-  /* #char:nth-child(n + 6)::before {
-    content: "\a";
-    white-space: pre;
-  } */
-  #bottom i {
-    font-size: 8vh !important;
-  }
-  #contact{
-
-    height: max-content !important;
-  }
-  #main{
-    max-height:max-content
-  }
-  #bottom{
-margin-bottom: 5%;
-visibility: hidden;
-width: 0;
-height: 0 !important;
-  }
- 
-  #welst div:first-child h1 {
-    font-size: 2rem;
-    font-family: monospace;
-  }
-  #hmys {
-    font-size: 2rem;
-    font-family: "Courier New", Courier, monospace;
-  }
-  #welst div:first-child span {
-    font-size: 3rem;
-  }
-  #main{
-    padding-bottom: 8vh !important;
-    width: 100% !important;
-    min-height: 90% !important;
-  }
-
-  #msgg,#contact{
-    width: 100% !important;
-  }
-  #icbtn button{
-    width: 60vw;
-  }
-  .gride{
-    height: 30vh;
-    /* padding-top: 5vh; */
-    /* padding-bottom: 5vh; */
-  }
- 
-  #nav:hover {
-    animation: none;
-  }
-  #iuo h3 {
-    display: none;
-    position: absolute;
-  }
-  #iuo {
-    margin-top: 0;
-  }
-  #main{
-    background-image: url('./fw.jpg');
-  }
-  .gridee {
-    grid-template-columns: 100%;
-  }
-  #welst {
-    min-height: 90%;
-    max-height: max-content;
-  }
-  #mid {
-    flex-direction: column;
-    width: 100% !important;
-    gap: 1vh;
-  }
-  #mid #sect {
-    width: 100% !important;
-  }
-  .as {
-    font-size: 1.5rem;
-  }
-  #main {
-    min-height: 115%;
-    max-height: max-content !important;
-    width: 100%;
-    overflow-x: hidden;
-    margin-bottom: 2vh;
-  }
-  .detail{
-
-    font-size: 2.2vh;
-  }
-  #char{
-    font-size: 2.6rem;
-  }
-  #welst div {
-    font-size: 1.8rem;
-}
-  #welst div {
-    margin: 2vh;
-    height: max-content !important;
-    max-height: max-content !important;
-  }
-  #bottom{
-  background-color: rgba(255, 255, 255, 0.36) !important;
-    backdrop-filter: blur(5px) !important;
-  }
-  #nav{
-    background-color: black;
-    opacity: 1;
-  }
-  #sect:first-child{
-    max-height: max-content !important;
-    min-height: 100%;
-    margin-bottom: 2vh;
-  }
-  #sect:last-child{
-    max-height: max-content; 
-    visibility: hidden;
-    height: 0 !important;
-  }
-#mid{ 
-  min-height: 50%;
-  height: max-content !important;
-  margin-bottom: 1vh;
-}
-#hu{
-  height: max-content !important;
-}
-#main{
-  max-height: max-content !important;
-}
-}
+};
