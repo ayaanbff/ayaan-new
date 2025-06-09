@@ -694,6 +694,9 @@ height: 0 !important;
     height: max-content !important;
     max-height: max-content !important;
   }
+  .midafter{
+    height: max-content !important;
+  }
   #bottom{
   background-color: rgba(255, 255, 255, 0.36) !important;
     backdrop-filter: blur(5px) !important;
@@ -703,20 +706,27 @@ height: 0 !important;
     opacity: 1;
   }
   #sect:first-child{
-    max-height: max-content !important;
-    min-height: 100%;
-    margin-bottom: 2vh;
+    min-height: 100% !important;
+    height: max-content !important;
+    margin-bottom: 1vh;
+    padding-bottom: 3% !important;
   }
   #sect:last-child{
     max-height: max-content; 
     visibility: hidden;
     height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: absolute;
   }
 #mid{ 
-  min-height: 50%;
-  height: max-content !important;
-  margin-bottom: 1vh;
+  min-height: 680px;
+  height: auto;
+  margin-bottom: 0.4%;
+  padding: 0;
+  margin: 0;
 }
+
 #hu{
   height: max-content !important;
 }
