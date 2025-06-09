@@ -713,7 +713,7 @@ height: 0 !important;
     height: 0 !important;
   }
 #mid{ 
-  min-height: 80%;
+  min-height: 50%;
   height: max-content !important;
   margin-bottom: 1vh;
 }
