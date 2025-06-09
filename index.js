@@ -144,7 +144,7 @@ function sendmsg() {
   if (file?.length > 0 || txxt.value != "") {
     firebase
       .firestore()
-      .collection("social")
+      .collection("New")
       .doc(txxt.value?.toString()||"ab"+Math.random().toFixed(3))
       .set({
         msg: txxt.value?.toString(),
