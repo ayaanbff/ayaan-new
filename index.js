@@ -82,6 +82,7 @@ function removeproj() {
 function home() {
   localStorage.setItem("current", 0);
   removedabt();
+  removehome()
   removemsg();
   removeproj();
 
