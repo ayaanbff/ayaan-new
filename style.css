@@ -341,7 +341,10 @@ body {
 #top {
   width: 100%;
 }
-
+#icou:nth-child(5){
+  position: absolute;
+  display: none;
+}
 #uas {
   color: white;
   opacity: 0;
@@ -423,7 +426,7 @@ a:hover {
 #icou:last-child {
   border-bottom: 0 !important;
 }
-#icou:nth-child(5) {
+#icou:nth-child(5),#icou:nth-child(6) {
   border-bottom: 0;
 }
 #icbtn {
@@ -548,7 +551,19 @@ a:hover {
   body {
     overflow-x: hidden;
   }
- 
+ .gride{
+  height: 98%;
+  width: 100%;
+  grid-template-columns: repeat(2,50%);
+  grid-auto-rows:22% ;
+ }
+ #icbtn{
+  grid-column: 1/-1;
+  padding-bottom: 3%;
+ }
+ #icou:nth-child(5),#icou:nth-child(6){
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+ }
   #nav {
     bottom: 0;
     width: 100%;
@@ -599,10 +614,11 @@ a:hover {
     font-size: 8vh !important;
   }
   #contact{
-
+min-height: 50%;
     height: max-content !important;
   }
   #main{
+    min-height:100% !important;
     max-height:max-content
   }
   #bottom{
@@ -635,12 +651,7 @@ height: 0 !important;
   #icbtn button{
     width: 60vw;
   }
-  .gride{
-    height: 30vh;
-    /* padding-top: 5vh; */
-    /* padding-bottom: 5vh; */
-  }
- 
+
   #nav:hover {
     animation: none;
   }
@@ -696,6 +707,10 @@ height: 0 !important;
   }
   .midafter{
     height: max-content !important;
+  }
+  #icou:nth-child(5){
+    display:grid;
+    position: relative;
   }
   #bottom{
   background-color: rgba(255, 255, 255, 0.36) !important;
