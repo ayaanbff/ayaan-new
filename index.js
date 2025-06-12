@@ -202,6 +202,7 @@ function contact() {
 <div id="icou"><i onclick="lnk(5)" class="fa fa-linkedin"></i></div>\
 <div id="icou"><i onclick="lnk(2)" class="fa fa-phone"></i></div>\
 <div id="icou"><i onclick="lnk(1)" class="fa fa-envelope"></i></div>\
+<div id="icou"><i onclick="lnk(6)" class="fa fa-instagram"></i></div>\
 <div id="icou"><i onclick="lnk(3)" class="fa fa-github"></i></div>\
 <div id="icbtn"><form method="GET" action="https://www.buymeacoffee.com/ayaanshakoor">\
 <button id="checkout-button" type="submit">Buy me a coffee <i class="fa fa-coffee"></i>"\
