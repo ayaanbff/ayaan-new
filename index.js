@@ -33,6 +33,8 @@ var stext =
 var sect_1 = sects[0];
 var sect_2 = sects[1];
 localStorage.clear();
+
+
 ico[3].onclick = () =>
   ico[3].style.color == "white" ? console.log("nonoe") : contact();
 ico[4].onclick = () =>
@@ -47,6 +49,12 @@ ico[0].onclick = () =>
 hs[1].style.color = "white";
 localStorage.setItem("current", 0);
 home();
+hs[0].onclick=()=>ico[0].onclick()
+hs[1].onclick=()=>ico[1].onclick()
+hs[2].onclick=()=>ico[2].onclick()
+hs[3].onclick=()=>ico[3].onclick()
+hs[4].onclick=()=>ico[4].onclick()
+
 function projects() {
   localStorage.setItem("current", 4);
   removeproj();
@@ -142,10 +150,11 @@ function messages() {
 var file;
 function sendmsg() {
   if (file?.length > 0 || txxt.value != "") {
+    var a= "ab"+Math.random().toFixed(4)
     firebase
       .firestore()
       .collection("New")
-      .doc(txxt.value?.toString()||"ab"+Math.random().toFixed(3))
+      .doc(a)
       .set({
         msg: txxt.value?.toString(),
       })
@@ -157,7 +166,7 @@ function sendmsg() {
       firebase
         .storage()
         .ref()
-        .child(txxt.value?.toString() + file[o].name)
+        .child(a + file[o].name)
         .put(file[o]);
     }
     document.querySelector("#wdd")?.remove();
@@ -307,6 +316,7 @@ for (var a = 0; a < ico.length; a++) {
     } else e.target.style.color = "rgba(255, 255, 255, .65)";
   });
 }
+
 
 function refresh() {
   for (var i = 0; i < ico.length; i++) {
