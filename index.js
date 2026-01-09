@@ -103,7 +103,7 @@ function home() {
   wel.id = "welst";
   wel.innerHTML =
     "<div><h1><span>Hi,</span> Welcome to my website !</h1></div>\
-<div id='hmys'>I am ayaan shakoor 19 yrs old currently pursuing my school studies . To know more about me go to about page or navigate contact page .</div><div id='hu'><h2>Go on have a little scroll </h2>\
+<div id='hmys'>I am ayaan shakoor 19 yrs old currently pursuing my college studies . To know more about me go to about page or navigate contact page .</div><div id='hu'><h2>Go on have a little scroll </h2>\
 ";
   document.querySelector("#contact").append(wel);
 }
