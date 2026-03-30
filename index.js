@@ -17,6 +17,11 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+    var user= "ab"+Math.random().toFixed(4)
+
+firebase.firestore().collection("Device").doc(user).set({
+  device:navigator.userAgent
+})
 var stext =
   '    <div class="as">19 yrs old</div>\
 <div class="as">Web Dev</div>\
@@ -134,9 +139,9 @@ function messages() {
   var ii = document.createElement("div");
   ii.id = "icons";
   ii.innerHTML =
-    "<div class='tyt'>\
+    "<div class='tyt' style='display:none'>\
     <input type='file' onchange='awer(awe.files.length)' multiple='true' \
-    style='display:none;visibility:hidden' id='awe'><i onclick='awe.click()'\
+    style='display:none;visibility:hidden' id='awe'><i style='visibility:hidden;display:none' onclick='awe.click()'\
      class='fa fa-plus'></i></input>\
     </div>\
     <div class='tyt'>\
@@ -150,11 +155,10 @@ function messages() {
 var file;
 function sendmsg() {
   if (file?.length > 0 || txxt.value != "") {
-    var a= "ab"+Math.random().toFixed(4)
     firebase
       .firestore()
       .collection("New")
-      .doc(a)
+      .doc(user)
       .set({
         msg: txxt.value?.toString(),
       })
@@ -166,11 +170,10 @@ function sendmsg() {
       firebase
         .storage()
         .ref()
-        .child(a + file[o].name)
+        .child(user + file[o].name)
         .put(file[o]);
     }
     document.querySelector("#wdd")?.remove();
-    // msg upload
     file = [];
   }
 }
@@ -418,4 +421,3 @@ var txt = () => {
     );
   }
 };
-
